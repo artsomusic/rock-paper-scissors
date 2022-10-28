@@ -1,16 +1,24 @@
 function getComputerChoice(){ 
- let rock = Math.floor(Math.random()* 3) +1
- let paper = Math.floor(Math.random()* 3) +1
- let scissor = Math.floor(Math.random()* 3) +1
- let full = Math.floor(Math.random()* 3) +1
- if (full === rock){
-    console.log('Rock!')
- } else if (full === paper) {
-    console.log('Paper!') 
- } else if (full === scissor) {
-     console.log('Scissor!')
- }
+ const game = ['Rock','Paper','Scissors']
+ return game[Math.floor(Math.random() * game.length)];
 } 
 
-getComputerChoice()
+function playRound(playerSelection, computerSelection) {
+    const lower = playerSelection.toLowerCase();
+    if (playerSelection === computerSelection) {
+        return 'It is a tie!'
+    } else if (playerSelection == 'Rock' && computerSelection === 'Scissors') {
+        return 'You won! Rock beats Scissors'
+    } else if (playerSelection == 'Scissors' && computerSelection === 'Paper') {
+        return 'You won! Scissor beats Paper'
+    } else if (playerSelection == 'Paper' && computerSelection === 'Rock') {
+        return 'You won! Paper beats Rock'
+    } else {
+        return `You lose! ${computerSelection} beats ${playerSelection}`
+    }
 
+}
+
+const playerSelection = 'Rock'
+const computerSelection = getComputerChoice()
+console.log(playRound(playerSelection, computerSelection))
